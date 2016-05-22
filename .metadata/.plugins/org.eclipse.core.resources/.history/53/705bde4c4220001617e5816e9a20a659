@@ -1,0 +1,5 @@
+package com.safari.mvc.model;
+
+public class Resource {
+
+}

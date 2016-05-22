@@ -13,9 +13,9 @@ public class ProjectService {
 		private List<Project> projects = new LinkedList<Project>();
 		
 		public ProjectService(){
-			Project javaProject = this.createProject("Java Project", "This is a Java Project" );
-			Project javascriptProject = this.createProject("Javascript Project", "This is a Javascript Project");
-			Project htmlProject = this.createProject("HTML Project", "This is an HTML project");
+			Project javaProject = this.createProject(1,"Java Project", "IBM","This is a Java Project" );
+			Project javascriptProject = this.createProject(2,"Javascript Project", "Microsoft","This is a Javascript Project");
+			Project htmlProject = this.createProject(3,"HTML Project", "Apple","This is an HTML project");
 			
 			this.projects.addAll(Arrays.asList(new Project[]{javaProject, javascriptProject, htmlProject}));
 		}
@@ -30,12 +30,13 @@ public class ProjectService {
 			}).collect(Collectors.toList()).get(0);
 		}
 
-		private Project createProject(String title, String description) {
+		private Project createProject(long id, String title, String sponsor,String description) {
 			Project project = new Project();
+			project.setProjectId(id);
 			project.setName(title);
+			project.setSponsor(sponsor);
 			project.setAuthorizedFunds(new BigDecimal("100000"));
 			project.setAuthorizedHours(new BigDecimal("1000"));
-			project.setProjectId(1L);
 			project.setSpecial(false);
 			project.setType("multi");
 			project.setYear("2015");
