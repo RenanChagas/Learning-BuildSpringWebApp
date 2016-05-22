@@ -1,0 +1,5 @@
+package com.safari.mvc.controller;
+
+public class HomeController {
+
+}
