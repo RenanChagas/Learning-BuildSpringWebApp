@@ -1,0 +1,5 @@
+package com.safari.mvc.resolver;
+
+public class GlobalHandlerExceptionResolver {
+
+}

@@ -13,6 +13,9 @@
 	<!-- Package que contenha os controllers -->
 	<context:component-scan base-package="com.safari.mvc.controller"/>
 	
+ 	<!-- Package que contenha os resolvers -->
+	<context:component-scan base-package="com.safari.mvc.resolver"/>
+	
 	<!-- Views config -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" > 
 		<property value="/WEB-INF/views/" name="prefix"/>
