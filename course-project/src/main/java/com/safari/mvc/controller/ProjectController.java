@@ -1,8 +1,13 @@
 package com.safari.mvc.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.safari.mvc.service.ProjectService;
+import com.safari.mvc.validator.ProjectValidator;
 import com.safari.mvc.model.Project;
 
 @Controller
@@ -38,9 +44,12 @@ public class ProjectController {
 	}
 	
 	@RequestMapping(value="/add", method=RequestMethod.POST)
-	public String saveProject(@RequestParam("name") String name, @ModelAttribute Project project){
-		System.out.println("Invoking saveProject");
-		System.out.println(name);
+	public String saveProject(@Valid @ModelAttribute Project project, Errors errors){
+		if(!errors.hasErrors()){
+			System.out.println("The project validated");
+		}else{
+			System.out.println("The project did not validated");
+		}
 		System.out.println(project);
 		return "project_add";
 	}
@@ -50,5 +59,15 @@ public class ProjectController {
 		System.out.println("Invoking saveSpecialProject");
 		return "project_add";
 	}
+	
+	/* Validators */
+	@InitBinder
+	public void initBinder(WebDataBinder binder){
+		binder.addValidators(new ProjectValidator());
+	}
+	
+	
+	
+	
 
 }

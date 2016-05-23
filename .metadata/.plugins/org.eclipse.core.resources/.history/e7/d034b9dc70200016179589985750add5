@@ -1,0 +1,5 @@
+package com.safari.mvc.validator;
+
+public class ProjectValidator {
+
+}

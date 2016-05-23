@@ -2,12 +2,15 @@ package com.safari.mvc.model;
 
 import java.math.BigDecimal;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 public class Project {
 
 	private Long projectId;
 
 	private String name;
 
+	@NotBlank
 	private String description;
 
 	private String sponsor;
