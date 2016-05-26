@@ -29,6 +29,10 @@ public class ProjectService {
 				return p.getProjectId().equals(projectId);
 			}).collect(Collectors.toList()).get(0);
 		}
+		
+		public void save(Project project){
+			this.projects.add(project);
+		}
 
 		private Project createProject(long id, String title, String sponsor,String description) {
 			Project project = new Project();

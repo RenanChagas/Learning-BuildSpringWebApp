@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.safari.mvc.service.ProjectService;
 import com.safari.mvc.validator.ProjectValidator;
@@ -51,13 +52,16 @@ public class ProjectController {
 			System.out.println("The project did not validated");
 		}
 		System.out.println(project);
-		return "project_add";
+		return "redirect:/project/find";
 	}
 	
 	@RequestMapping(value="/add", method=RequestMethod.POST, params={"type=multi","special"})
-	public String saveSpecialProject(){
+	public String saveSpecialProject(@Valid @ModelAttribute Project project, RedirectAttributes attributes){
 		System.out.println("Invoking saveSpecialProject");
-		return "project_add";
+		project.setProjectId(55L);
+		this.projectService.save(project);
+		attributes.addAttribute("projectId", project.getProjectId().toString());
+		return "redirect:/";
 	}
 	
 	/* Validators */
