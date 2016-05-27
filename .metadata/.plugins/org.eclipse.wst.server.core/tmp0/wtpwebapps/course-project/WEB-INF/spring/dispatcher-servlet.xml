@@ -30,5 +30,13 @@
 	
 	<!-- Static resources -->
 	<mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
+	
+	<!-- Interceptor -->
+	<mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/project/**"/>
+            <bean class="com.safari.mvc.interceptor.GlobalInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
 </beans>
