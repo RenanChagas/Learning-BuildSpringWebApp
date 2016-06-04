@@ -1,7 +1,0 @@
-package com.safari.mvc.validator;
-
-import org.springframework.validation.Validator;
-
-public class ProjectValidator implements Validator {
-
-}
